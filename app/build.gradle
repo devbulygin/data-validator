@@ -1,0 +1,43 @@
+plugins {
+    id 'application'
+    id 'checkstyle'
+    id 'jacoco'
+}
+
+group 'hexlet.code'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+    options.release = 17
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
+    testImplementation("org.junit.platform:junit-platform-suite:1.8.1")
+    testImplementation("org.skyscreamer:jsonassert:1.5.0")
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.8.9'
+    testImplementation("org.assertj:assertj-core:3.22.0")
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.4'
+    implementation 'commons-io:commons-io:2.6'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass = 'hexlet.code.App'
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
