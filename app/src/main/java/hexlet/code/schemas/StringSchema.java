@@ -4,51 +4,54 @@ import hexlet.code.Validator;
 
 public class StringSchema extends Validator {
     private boolean valid;
-    private String state = "default";
+    private boolean required = false;
+    private boolean minLength = false;
+    private boolean contains = false;
+
 
     private int length;
 
-    private String contains;
+    private String containsValue;
 
 
     public StringSchema() {
     }
 
     public void required() {
-        state = "required";
+        required = true;
     }
 
     public void minLength(int length) {
-        state = "minLength";
+        minLength = true;
         this.length = length;
     }
 
-    public void contains(String contains) {
-        state = "contains";
-        this.contains = contains;
+    public void contains(String containsValue) {
+        contains = true;
+        this.containsValue = containsValue;
     }
 
     public boolean isValid(Object value) {
-
-        switch (state) {
-            case ("required"):
-                if (!(value instanceof String) || value.toString().isEmpty() || value.toString().isBlank())
-                    return false;
-                else return true;
-
-            case ("minLength"):
-                if (value instanceof String && value.toString().length() >= length)
-                    return true;
-                else return false;
-
-
-            case ("contains"):
-                if (value instanceof String && value.toString().contains(contains))
-                    return true;
-                else return false;
-            default:
-                return true;
+        boolean result = true;
+        if (required) {
+            if (!(value instanceof String) || value.toString().isEmpty() || value.toString().isBlank())
+                result = false;
         }
-    }
 
+
+        if (minLength) {
+            if (value instanceof String && value.toString().length() >= length)
+                result = true;
+            else result = false;
+        }
+
+
+        if (contains) {
+            if (value instanceof String && value.toString().contains(containsValue))
+                result = true;
+            else result = false;
+        }
+
+        return result;
+    }
 }
