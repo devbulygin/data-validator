@@ -11,15 +11,15 @@ public class Validator {
     }
 
 
-    public StringSchema string(){
+    public StringSchema string() {
         return new StringSchema();
     }
 
-    public NumberSchema number(){
+    public NumberSchema number() {
         return new NumberSchema();
     }
 
-    public MapSchema map(){
+    public MapSchema map() {
         return new MapSchema();
     }
 

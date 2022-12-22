@@ -2,7 +2,7 @@ package hexlet.code.schemas;
 
 import java.util.Map;
 
-public class MapSchema extends BaseSchema{
+public class MapSchema extends BaseSchema {
     private boolean required = false;
     private boolean sizeof = false;
     private int size;
@@ -12,11 +12,12 @@ public class MapSchema extends BaseSchema{
         return this;
     }
 
-    public MapSchema sizeof(int size) {
+    public MapSchema sizeof(int sizeValue) {
         this.sizeof = true;
-        this.size = size;
+        this.size = sizeValue;
         return this;
     }
+
     @Override
     public boolean valid(Object value) {
 
@@ -35,8 +36,6 @@ public class MapSchema extends BaseSchema{
 
         return true;
     }
-
-
 
 
 }

@@ -1,6 +1,5 @@
 package hexlet.code.schemas;
 
-import java.util.Map;
 
 public class StringSchema extends BaseSchema {
 
@@ -25,15 +24,15 @@ public class StringSchema extends BaseSchema {
         return this;
     }
 
-    public StringSchema minLength(int length) {
+    public StringSchema minLength(int lengthValue) {
         minLength = true;
-        this.length = length;
+        this.length = lengthValue;
         return this;
     }
 
-    public StringSchema contains(String containsValue) {
+    public StringSchema contains(String containsVal) {
         contains = true;
-        this.containsValue = containsValue;
+        this.containsValue = containsVal;
         return this;
     }
 
@@ -41,18 +40,21 @@ public class StringSchema extends BaseSchema {
     public boolean valid(Object value) {
 
         if (required) {
-            if (!(value instanceof String) || value.toString().isEmpty() || value.toString().isBlank())
+            if (!(value instanceof String) || value.toString().isEmpty() || value.toString().isBlank()) {
                 return false;
+            }
         }
 
         if (minLength) {
-            if (value.toString().length() < length)
+            if (value.toString().length() < length) {
                 return false;
+            }
         }
 
         if (required && contains) {
-            if (!value.toString().contains(containsValue))
+            if (!value.toString().contains(containsValue)) {
                 return false;
+            }
         }
 
         return true;

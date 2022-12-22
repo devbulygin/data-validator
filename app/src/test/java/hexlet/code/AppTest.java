@@ -9,13 +9,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class AppTest {
 
 
     @Test
-    void StringSchemaTest(){
+    void stringSchemaTest() {
         Validator v = new Validator();
 
         StringSchema schema = v.string();
@@ -48,8 +48,9 @@ class AppTest {
         assertThat(schema.isValid("what does the fox say")).isFalse();
 
     }
+
     @Test
-    void NumberSchemaTest(){
+    void numberSchemaTest() {
         Validator v = new Validator();
 
         NumberSchema schema = v.number();
@@ -75,7 +76,7 @@ class AppTest {
     }
 
     @Test
-    void MapSchemaTest(){
+    void mapSchemaTest() {
         Validator v = new Validator();
 
         MapSchema schema = v.map();
@@ -106,3 +107,4 @@ class AppTest {
 
     }
 }
+
