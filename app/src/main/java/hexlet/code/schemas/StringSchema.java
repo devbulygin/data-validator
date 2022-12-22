@@ -1,12 +1,15 @@
 package hexlet.code.schemas;
 
-import hexlet.code.Validator;
+import java.util.Map;
 
-public class StringSchema extends Validator {
-    private boolean valid;
+public class StringSchema extends BaseSchema {
+
     private boolean required = false;
     private boolean minLength = false;
     private boolean contains = false;
+
+//    private Map<String, Boolean> checks
+//            = Map.of("required", required ,  "minLength",minLength, "contains", contains);
 
 
     private int length;
@@ -17,41 +20,41 @@ public class StringSchema extends Validator {
     public StringSchema() {
     }
 
-    public void required() {
+    public StringSchema required() {
         required = true;
+        return this;
     }
 
-    public void minLength(int length) {
+    public StringSchema minLength(int length) {
         minLength = true;
         this.length = length;
+        return this;
     }
 
-    public void contains(String containsValue) {
+    public StringSchema contains(String containsValue) {
         contains = true;
         this.containsValue = containsValue;
+        return this;
     }
 
-    public boolean isValid(Object value) {
-        boolean result = true;
+    @Override
+    public boolean valid(Object value) {
+
         if (required) {
             if (!(value instanceof String) || value.toString().isEmpty() || value.toString().isBlank())
-                result = false;
+                return false;
         }
-
 
         if (minLength) {
-            if (value instanceof String && value.toString().length() >= length)
-                result = true;
-            else result = false;
+            if (value.toString().length() < length)
+                return false;
         }
 
-
-        if (contains) {
-            if (value instanceof String && value.toString().contains(containsValue))
-                result = true;
-            else result = false;
+        if (required && contains) {
+            if (!value.toString().contains(containsValue))
+                return false;
         }
 
-        return result;
+        return true;
     }
 }
