@@ -7,7 +7,7 @@ public class MapSchema extends BaseSchema {
     private boolean sizeof = false;
     private boolean shape = false;
     private int size;
-    private Map <String, BaseSchema> schemas;
+    private Map<String, BaseSchema> schemas;
 
 
     public MapSchema required() {
@@ -21,8 +21,8 @@ public class MapSchema extends BaseSchema {
         return this;
     }
 
-    public MapSchema shape(Map <String, BaseSchema> schemas) {
-        this.schemas = schemas;
+    public MapSchema shape(Map<String, BaseSchema> schemas1) {
+        this.schemas = schemas1;
         this.shape = true;
         return this;
     }
@@ -43,14 +43,14 @@ public class MapSchema extends BaseSchema {
             }
         }
 
-        if (shape){
+        if (shape) {
 
             for (Map.Entry<String, BaseSchema> schema : this.schemas.entrySet()) {
                 String name = schema.getKey();
                 BaseSchema tempSchema = schema.getValue();
 
                 Object tempValue = ((Map<String, Object>) value).get(name);
-                if (tempSchema.isValid(tempValue) == false){
+                if (!tempSchema.isValid(tempValue)) {
                     return false;
                 }
             }
