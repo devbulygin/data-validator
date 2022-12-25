@@ -40,9 +40,9 @@ public class NumberSchema extends BaseSchema {
 
 
         if (positive) {
-            if (required == false && value == null) {
+            if (!required && value == null) {
                 return true;
-                }
+            }
             intValue = (int) value;
             if (intValue <= 0) {
                 return false;
