@@ -1,14 +1,14 @@
 package hexlet.code.schemas;
 
-
-public class BaseSchema {
+public abstract class BaseSchema {
     private Object value;
+    private boolean required;
 
-    public boolean valid(Object checkValue) {
-        return true;
-    }
 
-    public boolean isValid(Object checkValue) {
+
+    public abstract boolean valid(Object checkValue);
+
+    public final boolean isValid(Object checkValue) {
 
         return valid(checkValue);
     }
