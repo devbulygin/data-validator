@@ -39,7 +39,11 @@ public class NumberSchema extends BaseSchema {
         }
 
 
-        if (positive && required) {
+        if (positive) {
+            if (required == false && value == null) {
+                return true;
+                }
+            intValue = (int) value;
             if (intValue <= 0) {
                 return false;
             }
