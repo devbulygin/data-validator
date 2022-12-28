@@ -5,31 +5,18 @@ public final class NumberSchema extends BaseSchema {
     public NumberSchema required() {
         addChecks(
                 "required",
-                value -> value != null
-                        && value instanceof Integer
-
+                value -> value instanceof Integer
         );
         return this;
     }
 
 
     public NumberSchema positive() {
-
         addChecks(
                 "positive",
-                value -> (this.getChecks()).containsKey("required")
-                        ? (value != null
-                        && value instanceof Integer
+                value -> value == null || (value instanceof Integer
                         && (int) value > 0)
-                        : (value instanceof Integer
-                        && (int) value > 0)
-                        || value == null
-
-
-
-
         );
-
         return this;
     }
 
@@ -42,6 +29,4 @@ public final class NumberSchema extends BaseSchema {
         );
         return this;
     }
-
-
 }

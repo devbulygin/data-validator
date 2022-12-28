@@ -10,7 +10,6 @@ public final class Validator {
         return true;
     }
 
-
     public StringSchema string() {
         return new StringSchema();
     }
@@ -22,6 +21,4 @@ public final class Validator {
     public MapSchema map() {
         return new MapSchema();
     }
-
-
 }

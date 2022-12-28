@@ -9,7 +9,6 @@ public final class MapSchema extends BaseSchema {
         addChecks(
                 "required",
                 value -> value instanceof Map
-                        && value != null
         );
         return this;
     }
@@ -40,12 +39,7 @@ public final class MapSchema extends BaseSchema {
             if (!tempSchema.isValid(tempValue)) {
                 return false;
             }
-
         }
         return true;
-
-
     }
 }
-
-

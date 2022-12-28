@@ -1,5 +1,5 @@
 ## Data Validator  
-
+The project is a library that allows you to check the correctness of the data. The library supports the following data types: String, Integer, Map, and values in a Map
 ---
 
 ### Hexlet tests and linter status:
