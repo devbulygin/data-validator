@@ -21,7 +21,12 @@ public final class NumberSchema extends BaseSchema {
                         ? (value != null
                         && value instanceof Integer
                         && (int) value > 0)
-                        : (value instanceof Integer || value == null)
+                        : (value instanceof Integer
+                        && (int) value > 0)
+                        || value == null
+
+
+
 
         );
 
