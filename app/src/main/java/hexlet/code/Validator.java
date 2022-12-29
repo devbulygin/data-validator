@@ -6,10 +6,6 @@ import hexlet.code.schemas.StringSchema;
 
 public final class Validator {
 
-    boolean isValid() {
-        return true;
-    }
-
     public StringSchema string() {
         return new StringSchema();
     }
